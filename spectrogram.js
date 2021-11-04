@@ -111,6 +111,7 @@
   };
 
   Spectrogram.prototype._startMediaStreamDraw = function(analyser, canvasContext) {
+    if(this._audioEnded) return;
     window.requestAnimationFrame(this._startMediaStreamDraw.bind(this, analyser, canvasContext));
     var audioData = new Uint8Array(analyser.frequencyBinCount);
     analyser.getByteFrequencyData(audioData);
